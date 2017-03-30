@@ -6,21 +6,37 @@ This repository allows you to register to this one-day Tensorflow workshop.
 
 ### 1. Install the requirements
 
-The only requirement for this workshop is Tensorflow. See the [Tensorflow install](https://www.tensorflow.org/install/) documentation.
+The only requirements for this workshop are `git`, `python3`, `tensorflow` and `matplotlib`.
 
-Most users should only need to do this:
+Please review the instructions in the [INSTALL.txt](https://github.com/martin-gorner/tensorflow-mnist-tutorial/blob/master/INSTALL.txt) file.
+
+Most Python3 users should only need to do this:
 
 ```
-pip install tensorflow
+pip3 install --upgrade tensorflow
+pip3 install --upgrade matplotlib
 ```
 
 ### 2. Launch the register script
 
 ```
-$ python register.py
+$ python3 register.py
 ```
 
-You will be asked for your name and email, and you should be good to go!
+The script should go like this:
+
+```
+➜  apr26-tensorflow-workshop-register git:(master) ✗ python3 register.py
+Congratulations you have Tensorflow 1.0.1 installed. Now, let's register to the workshop!
+
+What is your full name? Jeff Dean
+What is your email address? jeff.dean@yahoo.fr
+
+We are now ready to submit your registration!
+Are you *sure* you will be able to attend the workshop on April 26th? [y, n] y
+
+Congratulations, you are registered to the workshop! You will receive an email as confirmation in the next few days.
+```
 
 You can send your questions to contact@dotconferences.com
 

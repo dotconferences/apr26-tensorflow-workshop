@@ -1,10 +1,13 @@
-#!/usr/bin/env python
-
 import re
 import sys
 import base64
-import urllib2
-import urllib
+
+if sys.version_info[0] != 3:
+    print("Sorry, you need Python 3 for this workshop. Please refer to the README for instructions!")
+    sys.exit(1)
+
+from urllib.request import urlopen
+from urllib.parse import urlencode
 
 try:
     import tensorflow
@@ -12,11 +15,17 @@ except:
     print("Sorry, but you don't seem to have Tensorflow installed. Please refer to the README for instructions!")
     sys.exit(1)
 
+try:
+    import matplotlib
+except:
+    print("Sorry, but you don't seem to have matplotlib installed. Please refer to the README for instructions!")
+    sys.exit(1)
+
 print("Congratulations you have Tensorflow %s installed. Now, let's register to the workshop!" % tensorflow.__version__)
 print("")
 
-fullname = raw_input("What is your full name? ")
-email = raw_input("What is your email address? ")
+fullname = input("What is your full name? ")
+email = input("What is your email address? ")
 
 if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
     print("This doesn't look like a valid email address, sorry!")
@@ -25,23 +34,23 @@ if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
 print("")
 print("We are now ready to submit your registration!")
 
-if raw_input("Are you *sure* you will be able to attend the workshop on April 26th? [y, n] ").lower() not in ("y", "yes"):
+if input("Are you *sure* you will be able to attend the workshop on April 26th? [y, n] ").lower() not in ("y", "yes"):
     print("Okay! Next time maybe.")
     sys.exit(1)
 
-
-form = "https://docs.google.com/forms/d/e/1FAIpQLSd4bKqFTcTa-3XbxS9Jp5TqtAreo1Zf15IAF7yxpd3wovYdZQ/formResponse"
+formid = "1FAIpQLSd4bKqFTcTa-3XbxS9Jp5TqtAreo1Zf15IAF7yxpd3wovYdZQ"
+form = "https://docs.google.com/forms/d/e/%s/formResponse" % formid
 
 try:
-    r = urllib2.urlopen(form, urllib.urlencode({
+    r = urlopen(form, bytes(urlencode({
         "entry.180159366": fullname,
         "entry.232824734": email,
-        "entry.78057320": tensorflow.__version__,
-        "entry.1000848763": base64.b64encode(fullname)
-    }))
+        "entry.78057320": "Tensorflow %s / Python %s" % (tensorflow.__version__, ".".join(map(str, sys.version_info[:3]))),
+        "entry.1000848763": base64.b64encode(bytes(fullname, "utf-8"))
+    }), "utf-8"))
 
     resp = r.read()
-except Exception, e:
+except Exception as e:
     raise
 
 print("")
