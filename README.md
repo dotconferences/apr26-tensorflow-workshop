@@ -1,3 +1,5 @@
+# Sorry, the workshop is full! Please signup to the [dotConferences newsletter](http://www.dotconferences.com) to be the first to know about future events!
+
 # Tensorflow workshop at dotAI 2017, on April 26th
 
 This repository allows you to register to this one-day Tensorflow workshop.
