@@ -1,6 +1,6 @@
-# Tensorflow workshop at dotAI 2017, on April 26th
+# Register to the TensorFlow workshop at dotAI 2017
 
-This repository allows you to register to this one-day Tensorflow workshop.
+This repository allows you to register to the [TensorFlow workshop on April 26th](https://www.dotai.io/tensorflow-training).
 
 ## How to register
 
