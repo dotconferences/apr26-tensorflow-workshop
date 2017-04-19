@@ -2,6 +2,9 @@ import re
 import sys
 import base64
 
+print("Sorry, the workshop is full! Please signup to the dotConferences newsletter at http://www.dotconferences.com to be the first to know about future events!")
+sys.exit(1)
+
 if sys.version_info[0] != 3:
     print("Sorry, you need Python 3 for this workshop. Please refer to the README for instructions!")
     sys.exit(1)
